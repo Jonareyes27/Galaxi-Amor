@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Galaxia de Amor 💖</title>
+
+<style>
+body {
+    margin: 0;
+    height: 100vh;
+    background: radial-gradient(circle at center, #1a0033, #000010);
+    overflow: hidden;
+    font-family: 'Arial', sans-serif;
+    color: white;
+}
+
+/* Estrellas */
+.star {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: white;
+    border-radius: 50%;
+    opacity: 0.8;
+    animation: twinkle 4s infinite alternate;
+}
+
+@keyframes twinkle {
+    from { opacity: 0.3; }
+    to { opacity: 1; }
+}
+
+/* Título */
+.title {
+    position: absolute;
+    top: 15px;
+    width: 100%;
+    text-align: center;
+    font-size: clamp(18px, 5vw, 30px);
+    color: #ffd6e0;
+    z-index: 10;
+}
+
+.date {
+    position: absolute;
+    top: 55px;
+    width: 100%;
+    text-align: center;
+    font-size: clamp(14px, 4vw, 18px);
+    opacity: 0.8;
+    z-index: 10;
+}
+
+/* Corazón */
+.heart-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 260px;
+    height: 260px;
+    transform: translate(-50%, -50%);
+    z-index: 5;
+}
+
+.heart {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: clamp(80px, 18vw, 120px);
+    color: #ff4d6d;
+    text-shadow: 0 0 40px #ff4d6d;
+    animation: beat 1.5s infinite;
+}
+
+@keyframes beat {
+    0%,100% { transform: translate(-50%, -50%) scale(1); }
+    50% { transform: translate(-50%, -50%) scale(1.25); }
+}
+
+/* Órbita frases */
+.orbit {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    animation: spin linear infinite;
+}
+
+@keyframes spin {
+    from { transform: rotate(-0px); }
+    to { transform: rotate(300deg); }
+}
+
+.phrase {
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: clamp(12px, 3vw, 16px);
+    white-space: nowrap;
+    color: #ffd6e0;
+    text-shadow: 0 0 10px #ff4d6d;
+}
+
+/* Frases flotando */
+.space-phrase {
+    position: absolute;
+    font-size: clamp(12px, 3vw, 16px);
+    color: #ffd6e0;
+    opacity: 0.75;
+    white-space: nowrap;
+    text-shadow: 0 0 10px #ff4d6d;
+    animation: floatSpace linear infinite;
+}
+
+@keyframes floatSpace {
+    from { transform: translateY(80px); }
+    to { transform: translateY(-150px); }
+}
+
+/* Botón música */
+button {
+    position: absolute;
+    bottom: 80px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 14px 32px;
+    border-radius: 30px;
+    border: none;
+    background: linear-gradient(45deg, #ff4d6d, #ff758c);
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    box-shadow: 0 0 25px rgba(255,77,109,0.8);
+    z-index: 10;
+}
+</style>
+</head>
+
+<body>
+
+<div class="title">🌹 Rosa 🌹</div>
+<div class="date">01 / 01 / 24 · San Valentín 💖</div>
+
+<div class="heart-container">
+    <div class="heart">❤️</div>
+
+    <div class="orbit" style="animation-duration:20s">
+        <div class="phrase">Rosa, eres mi universo 🌌</div>
+    </div>
+    <div class="orbit" style="animation-duration:26s">
+        <div class="phrase">Te amo más cada día 💕</div>
+    </div>
+    <div class="orbit" style="animation-duration:32s">
+        <div class="phrase">Nuestro amor es infinito ✨</div>
+    </div>
+    <div class="orbit" style="animation-duration:38s">
+        <div class="phrase">Mi corazón es tuyo ❤️</div>
+    </div>
+</div>
+
+<button onclick="playMusic()">▶ Reproducir nuestra canción</button>
+
+<audio id="music" loop>
+    <source src="musica.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+// Música
+function playMusic() {
+    const audio = document.getElementById("music");
+    audio.play();
+}
+
+// Estrellas
+for (let i = 0; i < 200; i++) {
+    const s = document.createElement("div");
+    s.className = "star";
+    s.style.left = Math.random() * 100 + "vw";
+    s.style.top = Math.random() * 100 + "vh";
+    s.style.opacity = Math.random();
+    s.style.animationDuration = (Math.random() * 3 + 2) + "s";
+    document.body.appendChild(s);
+}
+
+// Frases flotantes
+const phrases = [
+    "Te amo 💖",
+    "Eres mi todo ✨",
+    "Siempre tú 💕",
+    "Mi universo eres tú 🌌",
+    "Amor eterno 💘",
+    "Rosa 💖",
+    "Contigo todo es mejor 🌟",
+    "Feliz San Valentín 💝",
+    "Mi lugar favorito eres tú 🥰"
+];
+
+for (let i = 0; i < 18; i++) {
+    const p = document.createElement("div");
+    p.className = "space-phrase";
+    p.innerText = phrases[Math.floor(Math.random() * phrases.length)];
+    p.style.left = Math.random() * 100 + "vw";
+    p.style.top = Math.random() * 100 + "vh";
+    p.style.animationDuration = (Math.random() * 20 + 20) + "s";
+    document.body.appendChild(p);
+}
+</script>
+
+</body>
+</html>
